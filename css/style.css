@@ -1,0 +1,247 @@
+/* ============================================
+   Стили самого задачника (учебный сайт)
+   Внутри карточек задач — только «простые»
+   свойства: цвет, фон, шрифт, рамка, отступы.
+   Flex/grid использован лишь для раскладки
+   панелей (это не является решением задач).
+   ============================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #2d333a;
+  background-color: #f4f6f9;
+}
+
+code {
+  background-color: #e8edf3;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: Consolas, Monaco, monospace;
+  font-size: 14px;
+  color: #b03060;
+}
+
+/* ---------- Шапка ---------- */
+.site-header {
+  background-color: #ffffff;
+  border-bottom: 3px solid #3b82f6;
+  padding: 30px 20px 20px;
+  text-align: center;
+}
+
+.site-title {
+  margin: 0;
+  font-size: 34px;
+  color: #1e3a5f;
+}
+
+.site-subtitle {
+  margin: 8px 0 20px;
+  color: #6b7280;
+}
+
+.site-nav a {
+  display: inline-block;
+  margin: 4px 6px;
+  padding: 8px 16px;
+  color: #3b82f6;
+  text-decoration: none;
+  border: 1px solid #bfdbfe;
+  border-radius: 8px;
+}
+
+.site-nav a:hover {
+  background-color: #3b82f6;
+  color: #ffffff;
+}
+
+.how-to {
+  max-width: 720px;
+  margin: 0 auto;
+  color: #4b5563;
+  font-size: 15px;
+}
+
+/* ---------- Основной контент ---------- */
+.content {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.section {
+  background-color: #ffffff;
+  border: 1px solid #e2e6ea;
+  border-radius: 12px;
+  padding: 24px;
+  margin-top: 30px;
+}
+
+.section-title {
+  margin-top: 0;
+  font-size: 26px;
+  color: #1e3a5f;
+  border-bottom: 2px solid #e2e6ea;
+  padding-bottom: 10px;
+}
+
+.section-title .num {
+  color: #3b82f6;
+}
+
+.section-desc {
+  color: #4b5563;
+}
+
+/* ---------- Карточки задач ---------- */
+.task-card {
+  border: 1px solid #d7dee6;
+  border-radius: 10px;
+  padding: 16px 18px;
+  margin-top: 16px;
+  background-color: #fbfcfe;
+}
+
+.task-title {
+  margin: 0 0 12px;
+  font-size: 18px;
+  color: #1e3a5f;
+}
+
+/* Три панели: HTML / редактор CSS / результат */
+.task-body {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: stretch;
+}
+
+.pane {
+  flex: 1 1 260px;
+  min-width: 240px;
+  display: flex;
+  flex-direction: column;
+}
+
+.pane-label {
+  margin: 0 0 6px;
+  font-size: 13px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #6b7280;
+}
+
+/* Панель «Дано (HTML)» */
+.html-src {
+  flex: 1;
+  margin: 0;
+  background-color: #1e293b;
+  color: #e2e8f0;
+  padding: 14px;
+  border-radius: 8px;
+  overflow: auto;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.html-src code {
+  background: none;
+  padding: 0;
+  color: inherit;
+  font-family: Consolas, Monaco, monospace;
+  font-size: 13px;
+}
+
+/* Панель «Ваш CSS» */
+.css-input {
+  flex: 1;
+  min-height: 160px;
+  resize: vertical;
+  background-color: #0f172a;
+  color: #7dd3fc;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  padding: 14px;
+  font-family: Consolas, Monaco, monospace;
+  font-size: 13px;
+  line-height: 1.5;
+  tab-size: 2;
+}
+
+.css-input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+}
+
+.apply-btn {
+  margin-top: 8px;
+  padding: 9px 16px;
+  background-color: #3b82f6;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  align-self: flex-start;
+}
+
+.apply-btn:hover {
+  background-color: #1d4ed8;
+}
+
+.apply-btn.ok {
+  background-color: #16a34a;
+}
+
+/* Панель «Результат» */
+.preview-frame {
+  flex: 1;
+  min-height: 160px;
+  width: 100%;
+  background-color: #ffffff;
+  border: 1px solid #d7dee6;
+  border-radius: 8px;
+}
+
+.preview-frame.error {
+  border-color: #dc2626;
+  background-color: #fef2f2;
+}
+
+/* Цель задачи */
+.goal-text {
+  margin: 14px 0 0;
+  padding-top: 12px;
+  border-top: 1px dashed #d7dee6;
+  color: #374151;
+}
+
+/* ---------- Подвал ---------- */
+.site-footer {
+  max-width: 960px;
+  margin: 40px auto 30px;
+  padding: 20px;
+  text-align: center;
+  color: #6b7280;
+  border-top: 1px solid #d7dee6;
+}
+
+.footer-nav a {
+  margin: 0 8px;
+  color: #3b82f6;
+  text-decoration: none;
+}
+
+.footer-nav a:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS-задачник для начинающих верстальщиков</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <h1 class="site-title">CSS-задачник</h1>
+    <p class="site-subtitle">Тренируем простые селекторы: контекстные, классы и псевдоклассы</p>
+    <nav class="site-nav">
+      <a href="#context">Контекстные селекторы</a>
+      <a href="#classes">Классы</a>
+      <a href="#hover">Псевдокласс :hover</a>
+      <a href="#visited">Псевдокласс :visited</a>
+      <a href="#first-child">Псевдокласс :first-child</a>
+      <a href="#last-child">Псевдокласс :last-child</a>
+    </nav>
+    <p class="how-to">Как заниматься: слева — готовый HTML, в центре — поле для вашего CSS, справа — результат. Напишите стили и нажмите «Применить» (или Ctrl+Enter).</p>
+  </header>
+
+  <main class="content">
+
+    <section id="context" class="section">
+      <h2 class="section-title"><span class="num">1.</span> Контекстные селекторы</h2>
+      <p class="section-desc">Контекстный (потомковый) селектор выбирает элементы внутри другого элемента: <code>main p</code>, <code>nav a</code>, <code>.card h3</code>. Напишите CSS так, чтобы стиль применился только к нужным элементам.</p>
+
+      <div class="task-list">
+        <article class="task-card" id="task-1.1">
+          <h3 class="task-title">Задача 1.1 — Все абзацы внутри main</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;main&gt;
+  &lt;p&gt;Первый&lt;/p&gt;
+  &lt;p&gt;Второй&lt;/p&gt;
+&lt;/main&gt;
+&lt;p&gt;Снаружи&lt;/p&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 1.1" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: Сделайте все абзацы внутри <code>main</code> тёмно-синими, а абзац снаружи оставьте нетронутым.</p>
+        </article>
+
+        <article class="task-card" id="task-1.2">
+          <h3 class="task-title">Задача 1.2 — Ссылки внутри навигации</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;nav&gt;
+  &lt;a href="#"&gt;Главная&lt;/a&gt;
+  &lt;a href="#"&gt;О нас&lt;/a&gt;
+&lt;/nav&gt;
+&lt;p&gt;&lt;a href="#"&gt;Ссылка в тексте&lt;/a&gt;&lt;/p&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 1.2" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: Ссылки внутри <code>nav</code> сделайте зелёными и без подчёркивания; ссылка в тексте должна остаться синей.</p>
+        </article>
+
+        <article class="task-card" id="task-1.3">
+          <h3 class="task-title">Задача 1.3 — Заголовки внутри карточек</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;div class="card"&gt;
+  &lt;h3&gt;Карточка 1&lt;/h3&gt;
+  &lt;h3&gt;Карточка 2&lt;/h3&gt;
+&lt;/div&gt;
+&lt;h3&gt;Обычный заголовок&lt;/h3&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 1.3" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: Заголовки <code>h3</code> только внутри <code>.card</code> сделайте оранжевыми. Обычный h3 не должен измениться.</p>
+        </article>
+
+        <article class="task-card" id="task-1.4">
+          <h3 class="task-title">Задача 1.4 — Пункты списка внутри футера</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;footer&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Политика&lt;/li&gt;
+    &lt;li&gt;Контакты&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/footer&gt;
+&lt;ul&gt;&lt;li&gt;Другой список&lt;/li&gt;&lt;/ul&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 1.4" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: Пункты <code>li</code> внутри <code>footer</code> сделайте серыми и курсивными. Другой список оставьте обычным.</p>
+        </article>
+
+        <article class="task-card" id="task-1.5">
+          <h3 class="task-title">Задача 1.5 — Вложенный контекст</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;div class="article"&gt;
+  &lt;div class="intro"&gt;
+    &lt;p&gt;Вступление&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;p&gt;Основной текст&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 1.5" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: Абзацы внутри <code>.intro</code>, который лежит внутри <code>.article</code>, увеличьте до 20px и выделите жирным. Абзац «Основной текст» не трогайте.</p>
+        </article>
+
+        <article class="task-card" id="task-1.6">
+          <h3 class="task-title">Задача 1.6 — Таблицы в секции</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;section class="report"&gt;
+  &lt;table&gt;
+    &lt;tr&gt;&lt;td&gt;100&lt;/td&gt;&lt;td&gt;200&lt;/td&gt;&lt;/tr&gt;
+  &lt;/table&gt;
+&lt;/section&gt;
+&lt;table&gt;&lt;tr&gt;&lt;td&gt;другая&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 1.6" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: Ячейкам <code>td</code> таблиц только внутри <code>.report</code> задайте светло-жёлтый фон и рамку 1px. Вторая таблица должна остаться без изменений.</p>
+        </article>
+
+        <article class="task-card" id="task-1.7">
+          <h3 class="task-title">Задача 1.7 — Кнопки внутри шапки</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;header&gt;
+  &lt;button&gt;Войти&lt;/button&gt;
+&lt;/header&gt;
+&lt;button&gt;Отправить&lt;/button&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 1.7" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: Кнопкам внутри <code>header</code> задайте синий фон, белый текст и рамку 2px. Кнопка вне шапки должна остаться стандартной.</p>
+        </article>
+
+        <article class="task-card" id="task-1.8">
+          <h3 class="task-title">Задача 1.8 — Поля ввода в сайдбаре</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;aside class="sidebar"&gt;
+  &lt;input type="text" placeholder="Имя"&gt;
+  &lt;input type="email" placeholder="Email"&gt;
+&lt;/aside&gt;
+&lt;input type="search" placeholder="Поиск"&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 1.8" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: Всем <code>input</code> внутри <code>.sidebar</code> задайте сплошную рамку 1px, скругление 6px и внутренние отступы 8px. Поле поиска вне сайдбара не меняйте.</p>
+        </article>
+
+        <article class="task-card" id="task-1.9">
+          <h3 class="task-title">Задача 1.9 — Цитаты внутри статей</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;article&gt;
+  &lt;blockquote&gt;Цитата автора&lt;/blockquote&gt;
+&lt;/article&gt;
+&lt;blockquote&gt;Цитата вне статьи&lt;/blockquote&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 1.9" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: <code>blockquote</code> внутри <code>article</code> выделите левой рамкой 4px и серым фоном. Цитата вне статьи должна остаться обычной.</p>
+        </article>
+
+        <article class="task-card" id="task-1.10">
+          <h3 class="task-title">Задача 1.10 — Span внутри заголовков</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;h2&gt;Привет, &lt;span&gt;мир&lt;/span&gt;!&lt;/h2&gt;
+&lt;p&gt;Обычный &lt;span&gt;текст&lt;/span&gt;&lt;/p&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 1.10" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: <code>span</code> только внутри <code>h2</code> сделайте красным и жирным. Span в абзаце оставьте как есть.</p>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="classes" class="section">
+      <h2 class="section-title"><span class="num">2.</span> Классы</h2>
+      <p class="section-desc">Классы — самый частый инструмент верстальщика. Тренируем одиночные классы, связки «тег.класс», комбинированные селекторы без пробела, группировку через запятую и переопределение стилей.</p>
+
+      <div class="task-list">
+        <article class="task-card" id="task-2.1">
+          <h3 class="task-title">Задача 2.1 — Первый класс</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;p class="lead"&gt;Ведущий абзац&lt;/p&gt;
+&lt;p&gt;Обычный абзац&lt;/p&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 2.1" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: Элемент с классом <code>.lead</code> сделайте 18px и тёмно-серым. Обычный абзац не меняйте.</p>
+        </article>
+
+        <article class="task-card" id="task-2.2">
+          <h3 class="task-title">Задача 2.2 — Класс для заголовка</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;h2 class="accent"&gt;Важный заголовок&lt;/h2&gt;
+&lt;h2&gt;Обычный заголовок&lt;/h2&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 2.2" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: У элемента <code>.accent</code> добавьте нижнюю рамку 3px сплошную фиолетового цвета.</p>
+        </article>
+
+        <article class="task-card" id="task-2.3">
+          <h3 class="task-title">Задача 2.3 — Общая база и модификаторы</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;button class="btn btn-primary"&gt;ОК&lt;/button&gt;
+&lt;button class="btn btn-danger"&gt;Удалить&lt;/button&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 2.3" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: Классу <code>.btn</code> задайте общий стиль: скругление 8px, padding 10px 20px, рамка 1px. А <code>.btn-primary</code> — синий фон, <code>.btn-danger</code> — красный, обе кнопки с белым текстом.</p>
+        </article>
+
+        <article class="task-card" id="task-2.4">
+          <h3 class="task-title">Задача 2.4 — Комбинированный селектор</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;div class="note warning"&gt;Внимание!&lt;/div&gt;
+&lt;div class="note"&gt;Заметка&lt;/div&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 2.4" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: Жёлтый фон и рамку дайте только элементу, у которого одновременно два класса — <code>.note</code> и <code>.warning</code>. Заметка без warning должна остаться серой.</p>
+        </article>
+
+        <article class="task-card" id="task-2.5">
+          <h3 class="task-title">Задача 2.5 — Список с классом</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;ul class="menu"&gt;
+  &lt;li&gt;Пункт 1&lt;/li&gt;
+  &lt;li&gt;Пункт 2&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 2.5" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: Уберите маркеры у списков с классом <code>.menu</code> и добавьте каждому пункту нижнюю рамку 1px.</p>
+        </article>
+
+        <article class="task-card" id="task-2.6">
+          <h3 class="task-title">Задача 2.6 — Класс + тег</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;p class="highlight"&gt;Текст&lt;/p&gt;
+&lt;span class="highlight"&gt;Фраза&lt;/span&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 2.6" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: Жёлтый фон дайте только <code>p.highlight</code> — селектором «тег + класс». Элемент <code>span.highlight</code> изменён быть не должен.</p>
+        </article>
+
+        <article class="task-card" id="task-2.7">
+          <h3 class="task-title">Задача 2.7 — Группировка селекторов</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;h2 class="title"&gt;Заголовок&lt;/h2&gt;
+&lt;p class="subtitle"&gt;Подзаголовок&lt;/p&gt;
+&lt;span class="tag"&gt;Метка&lt;/span&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 2.7" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: Одним правилом через запятую задайте трём классам (<code>.title</code>, <code>.subtitle</code>, <code>.tag</code>) одинаковый цвет текста #8e44ad.</p>
+        </article>
+
+        <article class="task-card" id="task-2.8">
+          <h3 class="task-title">Задача 2.8 — Карточка товара</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;div class="product"&gt;
+  &lt;h3 class="product-name"&gt;Товар&lt;/h3&gt;
+  &lt;p class="product-price"&gt;999 ₽&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 2.8" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: <code>.product</code> — рамка 1px, скругление 10px и padding 16px. <code>.product-price</code> — крупный (24px) жирный зелёный текст.</p>
+        </article>
+
+        <article class="task-card" id="task-2.9">
+          <h3 class="task-title">Задача 2.9 — Модификатор размера</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;button class="btn small"&gt;Маленькая&lt;/button&gt;
+&lt;button class="btn big"&gt;Большая&lt;/button&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 2.9" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: Кнопкам <code>.btn.small</code> задайте шрифт 12px и padding 5px 10px, кнопкам <code>.btn.big</code> — шрифт 20px и padding 15px 30px.</p>
+        </article>
+
+        <article class="task-card" id="task-2.10">
+          <h3 class="task-title">Задача 2.10 — Переопределение стиля</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;p class="text"&gt;Обычный&lt;/p&gt;
+&lt;p class="text muted"&gt;Приглушённый&lt;/p&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 2.10" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: <code>.text</code> задайте чёрный цвет, а <code>.muted</code> переопределите его на серый. Оба правила пишите одним свойством color.</p>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="hover" class="section">
+      <h2 class="section-title"><span class="num">3.</span> Псевдокласс :hover</h2>
+      <p class="section-desc">Наведение курсора — интерактив без JavaScript. Меняем цвет, фон, рамку, тень, курсор и размер шрифта.</p>
+
+      <div class="task-list">
+        <article class="task-card" id="task-3.1">
+          <h3 class="task-title">Задача 3.1 — Кнопка меняет цвет</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;button class="btn"&gt;Наведи на меня&lt;/button&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 3.1" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: При наведении фон кнопки становится синим, а текст — белым.</p>
+        </article>
+
+        <article class="task-card" id="task-3.2">
+          <h3 class="task-title">Задача 3.2 — Подчёркивание при наведении</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;a href="#" class="link"&gt;Ссылка без подчёркивания&lt;/a&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 3.2" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: Ссылка <code>.link</code> без подчёркивания; при наведении подчёркивание появляется.</p>
+        </article>
+
+        <article class="task-card" id="task-3.3">
+          <h3 class="task-title">Задача 3.3 — Тень карточки</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;div class="card"&gt;Карточка&lt;/div&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 3.3" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: У карточки рамка 1px и скругление 10px. При наведении появляется тень box-shadow.</p>
+        </article>
+
+        <article class="task-card" id="task-3.4">
+          <h3 class="task-title">Задача 3.4 — Подсветка пункта меню</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;ul class="menu"&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Пункт 1&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Пункт 2&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 3.4" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: При наведении на <code>li</code> его фон становится светло-серым (подсвечивается весь пункт, а не только ссылка).</p>
+        </article>
+
+        <article class="task-card" id="task-3.5">
+          <h3 class="task-title">Задача 3.5 — Увеличение текста</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;p class="grow"&gt;Наведи курсор&lt;/p&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 3.5" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: При наведении размер шрифта <code>.grow</code> увеличивается с 16px до 20px.</p>
+        </article>
+
+        <article class="task-card" id="task-3.6">
+          <h3 class="task-title">Задача 3.6 — Курсор и рамка</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;div class="clickable"&gt;Я кликабельный&lt;/div&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 3.6" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: При наведении на <code>.clickable</code> появляются рамка 2px и cursor: pointer.</p>
+        </article>
+
+        <article class="task-card" id="task-3.7">
+          <h3 class="task-title">Задача 3.7 — Наведение на заголовок</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;h3 class="heading"&gt;Заголовок&lt;/h3&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 3.7" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: При наведении цвет <code>h3.heading</code> меняется на оранжевый, а font-weight — на bold.</p>
+        </article>
+
+        <article class="task-card" id="task-3.8">
+          <h3 class="task-title">Задача 3.8 — Таблица подсвечивает строку</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;table&gt;
+  &lt;tr&gt;&lt;td&gt;Ряд 1&lt;/td&gt;&lt;td&gt;данные&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;Ряд 2&lt;/td&gt;&lt;td&gt;данные&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 3.8" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: При наведении на строку таблицы она получает светло-голубой фон.</p>
+        </article>
+
+        <article class="task-card" id="task-3.9">
+          <h3 class="task-title">Задача 3.9 — Иконка-круг</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;span class="icon"&gt;★&lt;/span&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 3.9" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: <code>.icon</code> сделайте круглым: padding 10px, border-radius 50%, рамка 2px. При наведении фон становится золотым.</p>
+        </article>
+
+        <article class="task-card" id="task-3.10">
+          <h3 class="task-title">Задача 3.10 — Смена нескольких свойств</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;div class="banner"&gt;Баннер акции&lt;/div&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 3.10" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: При наведении баннер меняет сразу всё: фон (тёмный), цвет текста (белый) и скругление углов (16px).</p>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="visited" class="section">
+      <h2 class="section-title"><span class="num">4.</span> Псевдокласс :visited</h2>
+      <p class="section-desc">:visited стилизует уже посещённые ссылки. Помните про ограничения безопасности браузеров и порядок правил LVHA (:link → :visited → :hover → :active).</p>
+
+      <div class="task-list">
+        <article class="task-card" id="task-4.1">
+          <h3 class="task-title">Задача 4.1 — Посещённая ссылка</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;a href="https://developer.mozilla.org"&gt;MDN&lt;/a&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 4.1" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: Непосещённые ссылки — синие (:link), посещённые — фиолетовые (:visited). Нажмите ссылку, вернитесь назад и проверьте результат.</p>
+        </article>
+
+        <article class="task-card" id="task-4.2">
+          <h3 class="task-title">Задача 4.2 — Серый для посещённых</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;a href="#one"&gt;Якорь 1&lt;/a&gt;
+&lt;a href="#two"&gt;Якорь 2&lt;/a&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 4.2" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: Посещённые ссылки становятся серыми. Переходите по ссылкам по очереди и наблюдайте.</p>
+        </article>
+
+        <article class="task-card" id="task-4.3">
+          <h3 class="task-title">Задача 4.3 — Цвет потомков ссылки</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;a href="#"&gt;&lt;span&gt;Текст ссылки&lt;/span&gt;&lt;/a&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 4.3" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: Добейтесь, чтобы и <code>span</code> внутри посещённой ссылки стал фиолетовым (помогут color: inherit или отдельный селектор).</p>
+        </article>
+
+        <article class="task-card" id="task-4.4">
+          <h3 class="task-title">Задача 4.4 — Четыре состояния ссылки</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;a href="#" class="fancy"&gt;Ссылка&lt;/a&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 4.4" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: Задайте цвета для <code>:link</code> (синий), <code>:visited</code> (фиолетовый), <code>:hover</code> (красный), <code>:active</code> (оранжевый) в правильном порядке LVHA.</p>
+        </article>
+
+        <article class="task-card" id="task-4.5">
+          <h3 class="task-title">Задача 4.5 — Меню посещённых пунктов</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;ul class="nav-list"&gt;
+  &lt;li&gt;&lt;a href="/page1"&gt;Страница 1&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="/page2"&gt;Страница 2&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 4.5" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: Посещённые ссылки в <code>.nav-list</code> получают зелёный цвет текста, непосещённые остаются синими.</p>
+        </article>
+
+        <article class="task-card" id="task-4.6">
+          <h3 class="task-title">Задача 4.6 — Подчёркивание посещённых</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;a href="#" class="plain"&gt;Ссылка&lt;/a&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 4.6" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: Попробуйте убрать подчёркивание у посещённых ссылок свойством text-decoration. Объясните, почему браузер может это игнорировать.</p>
+        </article>
+
+        <article class="task-card" id="task-4.7">
+          <h3 class="task-title">Задача 4.7 — Разные цвета по разделам</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;div class="blog"&gt;&lt;a href="#"&gt;Статья&lt;/a&gt;&lt;/div&gt;
+&lt;div class="shop"&gt;&lt;a href="#"&gt;Товар&lt;/a&gt;&lt;/div&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 4.7" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: Посещённые ссылки в блоге (<code>.blog</code>) — коричневые, в магазине (<code>.shop</code>) — бордовые. Совместите контекстный селектор и :visited.</p>
+        </article>
+
+        <article class="task-card" id="task-4.8">
+          <h3 class="task-title">Задача 4.8 — Фон для посещённых</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;a href="#" class="chip"&gt;Метка&lt;/a&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 4.8" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: Задайте <code>a:visited</code> background-color и цвет текста так, чтобы они отличались от :link. Что из этого применится и почему?</p>
+        </article>
+
+        <article class="task-card" id="task-4.9">
+          <h3 class="task-title">Задача 4.9 — Порядок правил</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;a href="#" class="order"&gt;Ссылка&lt;/a&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 4.9" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: Расположите правила так, чтобы <code>:hover</code> всегда перекрывал стиль посещённой ссылки, даже когда ссылка уже посещена.</p>
+        </article>
+
+        <article class="task-card" id="task-4.10">
+          <h3 class="task-title">Задача 4.10 — Ограничения безопасности</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;a href="#" class="order"&gt;Ссылка&lt;/a&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 4.10" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: Изучите готовое правило ниже. Определите, какие свойства браузер разрешит для <code>:visited</code>, и напишите своё правило так, чтобы эффект был заметен.</p>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="first-child" class="section">
+      <h2 class="section-title"><span class="num">5.</span> Псевдокласс :first-child</h2>
+      <p class="section-desc">:first-child выбирает элемент, который является ПЕРВЫМ ребёнком родителя, независимо от тега. Здесь прячутся главные ловушки новичков.</p>
+
+      <div class="task-list">
+        <article class="task-card" id="task-5.1">
+          <h3 class="task-title">Задача 5.1 — Первый абзац в div</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;div&gt;
+  &lt;p&gt;Первый&lt;/p&gt;
+  &lt;p&gt;Второй&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 5.1" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: Первый абзац внутри div сделайте жирным с помощью <code>:first-child</code>.</p>
+        </article>
+
+        <article class="task-card" id="task-5.2">
+          <h3 class="task-title">Задача 5.2 — Ловушка с заголовком</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;div&gt;
+  &lt;h2&gt;Заголовок&lt;/h2&gt;
+  &lt;p&gt;Абзац&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 5.2" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: Правило <code>p:first-child</code> здесь не сработает. Объясните почему и стилизуйте абзац другим способом (например, :last-child или :first-of-type).</p>
+        </article>
+
+        <article class="task-card" id="task-5.3">
+          <h3 class="task-title">Задача 5.3 — Первый пункт списка</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;ul&gt;
+  &lt;li&gt;Раз&lt;/li&gt;
+  &lt;li&gt;Два&lt;/li&gt;
+  &lt;li&gt;Три&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 5.3" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: Первому <code>li</code> добавьте верхнюю рамку 2px сплошную.</p>
+        </article>
+
+        <article class="task-card" id="task-5.4">
+          <h3 class="task-title">Задача 5.4 — Первая ячейка каждой строки</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;table&gt;
+  &lt;tr&gt;&lt;td&gt;Имя&lt;/td&gt;&lt;td&gt;Возраст&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;Анна&lt;/td&gt;&lt;td&gt;25&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 5.4" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: Первой ячейке каждой строки таблицы задайте жирный текст и серый фон.</p>
+        </article>
+
+        <article class="task-card" id="task-5.5">
+          <h3 class="task-title">Задача 5.5 — Первый ребёнок с классом</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;div class="items"&gt;
+  &lt;span class="item"&gt;A&lt;/span&gt;
+  &lt;span class="item"&gt;B&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 5.5" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: Стилизируйте первый <code>.item</code> (синий фон, белый текст) — совместите класс и псевдокласс.</p>
+        </article>
+
+        <article class="task-card" id="task-5.6">
+          <h3 class="task-title">Задача 5.6 — Обнуление верхнего margin</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;section&gt;
+  &lt;h2&gt;Заголовок&lt;/h2&gt;
+  &lt;p&gt;Текст&lt;/p&gt;
+&lt;/section&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 5.6" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: У первого дочернего элемента секции обнулите верхний margin (классический приём против схлопывания отступов).</p>
+        </article>
+
+        <article class="task-card" id="task-5.7">
+          <h3 class="task-title">Задача 5.7 — Первая кнопка в группе</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;div class="btn-group"&gt;
+  &lt;button&gt;Слева&lt;/button&gt;
+  &lt;button&gt;По центру&lt;/button&gt;
+  &lt;button&gt;Справа&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 5.7" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: Первой кнопке группы скруглите только левые углы (border-radius: 10px 0 0 10px), остальным уберите скругление совсем.</p>
+        </article>
+
+        <article class="task-card" id="task-5.8">
+          <h3 class="task-title">Задача 5.8 — Первая ссылка в навигации</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;nav&gt;
+  &lt;a href="#"&gt;Домой&lt;/a&gt;
+  &lt;a href="#"&gt;Вперёд&lt;/a&gt;
+&lt;/nav&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 5.8" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: Каждая ссылка nav имеет padding 10px. Первой ссылке уберите левый padding, чтобы текст начинался вплотную к краю.</p>
+        </article>
+
+        <article class="task-card" id="task-5.9">
+          <h3 class="task-title">Задача 5.9 — Первый ребёнок блока отзыва</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;blockquote class="review"&gt;
+  &lt;p&gt;Текст отзыва&lt;/p&gt;
+  &lt;cite&gt;Автор&lt;/cite&gt;
+&lt;/blockquote&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 5.9" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: Первому ребёнку <code>.review</code> задайте курсивный текст и серый цвет.</p>
+        </article>
+
+        <article class="task-card" id="task-5.10">
+          <h3 class="task-title">Задача 5.10 — :first-child против :first-of-type</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;div&gt;
+  &lt;h3&gt;Заголовок&lt;/h3&gt;
+  &lt;p&gt;Первый абзац&lt;/p&gt;
+  &lt;p&gt;Второй абзац&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 5.10" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: Сделайте первый абзац жирным двумя способами по очереди: <code>p:first-child</code> и <code>p:first-of-type</code>. Объясните, почему первое правило здесь не работает.</p>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="last-child" class="section">
+      <h2 class="section-title"><span class="num">6.</span> Псевдокласс :last-child</h2>
+      <p class="section-desc">:last-child выбирает последнего ребёнка родителя. Классические приёмы: убрать рамку/отступ у последнего элемента, скруглить край группы кнопок.</p>
+
+      <div class="task-list">
+        <article class="task-card" id="task-6.1">
+          <h3 class="task-title">Задача 6.1 — Последний абзац</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;div&gt;
+  &lt;p&gt;Первый&lt;/p&gt;
+  &lt;p&gt;Последний&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 6.1" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: Последний абзац внутри div сделайте серым.</p>
+        </article>
+
+        <article class="task-card" id="task-6.2">
+          <h3 class="task-title">Задача 6.2 — Рамки списка без последней</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;ul class="list"&gt;
+  &lt;li&gt;Пункт 1&lt;/li&gt;
+  &lt;li&gt;Пункт 2&lt;/li&gt;
+  &lt;li&gt;Пункт 3&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 6.2" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: У всех <code>li</code> нижняя рамка 1px, а у последнего пункта её быть не должно (классический приём).</p>
+        </article>
+
+        <article class="task-card" id="task-6.3">
+          <h3 class="task-title">Задача 6.3 — Разделитель после последнего пункта</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;nav&gt;
+  &lt;a href="#"&gt;Пункт 1&lt;/a&gt;
+  &lt;a href="#"&gt;Пункт 2&lt;/a&gt;
+  &lt;a href="#"&gt;Контакты&lt;/a&gt;
+&lt;/nav&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 6.3" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: Между ссылками навигации стоит правая рамка-разделитель 1px. У последней ссылки рамку уберите.</p>
+        </article>
+
+        <article class="task-card" id="task-6.4">
+          <h3 class="task-title">Задача 6.4 — Обнуление нижнего margin</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;footer&gt;
+  &lt;p&gt;Копирайт&lt;/p&gt;
+  &lt;p&gt;Адрес&lt;/p&gt;
+&lt;/footer&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 6.4" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: У последнего элемента футера (любого тега) уберите нижний margin, чтобы содержимое было прижато к низу.</p>
+        </article>
+
+        <article class="task-card" id="task-6.5">
+          <h3 class="task-title">Задача 6.5 — Последняя кнопка группы</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;div class="btn-group"&gt;
+  &lt;button&gt;Слева&lt;/button&gt;
+  &lt;button&gt;По центру&lt;/button&gt;
+  &lt;button&gt;Справа&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 6.5" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: Последней кнопке скруглите только правые углы (border-radius: 0 10px 10px 0), у остальных скругление уберите.</p>
+        </article>
+
+        <article class="task-card" id="task-6.6">
+          <h3 class="task-title">Задача 6.6 — Итоговая строка таблицы</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;table&gt;
+  &lt;tr&gt;&lt;td&gt;Яблоко&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;Груша&lt;/td&gt;&lt;td&gt;5&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;Итого&lt;/td&gt;&lt;td&gt;15&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 6.6" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: Последняя строка таблицы получает двойную нижнюю рамку 3px как «итог».</p>
+        </article>
+
+        <article class="task-card" id="task-6.7">
+          <h3 class="task-title">Задача 6.7 — Последний вопрос FAQ</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;div class="faq"&gt;
+  &lt;p class="q"&gt;Вопрос 1&lt;/p&gt;
+  &lt;p class="q"&gt;Вопрос 2&lt;/p&gt;
+  &lt;p class="q"&gt;Вопрос 3&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 6.7" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: Последнему вопросу <code>.q</code> добавьте нижнюю рамку 2px, остальным — 1px.</p>
+        </article>
+
+        <article class="task-card" id="task-6.8">
+          <h3 class="task-title">Задача 6.8 — :last-child против :last-of-type</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;div&gt;
+  &lt;p&gt;Абзац 1&lt;/p&gt;
+  &lt;p&gt;Абзац 2&lt;/p&gt;
+  &lt;span&gt;Метка&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 6.8" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: Сделайте последний абзац жирным. Правило <code>p:last-child</code> не подходит — объясните почему и используйте <code>p:last-of-type</code>.</p>
+        </article>
+
+        <article class="task-card" id="task-6.9">
+          <h3 class="task-title">Задача 6.9 — Колонки футера</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;div class="footer-cols"&gt;
+  &lt;div class="col"&gt;
+    &lt;h4&gt;О нас&lt;/h4&gt;
+    &lt;p&gt;Текст&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="col"&gt;
+    &lt;h4&gt;Услуги&lt;/h4&gt;
+    &lt;p&gt;Текст&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="col"&gt;
+    &lt;h4&gt;Контакты&lt;/h4&gt;
+    &lt;p&gt;Текст&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 6.9" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: У колонок <code>.col</code> правая рамка-разделитель 1px, кроме последней колонки. Внутри колонок есть вложенные элементы — учтите это.</p>
+        </article>
+
+        <article class="task-card" id="task-6.10">
+          <h3 class="task-title">Задача 6.10 — Первый и последний вместе</h3>
+          <div class="task-body">
+            <div class="pane pane-html">
+              <h4 class="pane-label">Дано (HTML)</h4>
+              <pre class="html-src"><code>&lt;ol class="steps"&gt;
+  &lt;li&gt;Шаг 1&lt;/li&gt;
+  &lt;li&gt;Шаг 2&lt;/li&gt;
+  &lt;li&gt;Шаг 3&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+            </div>
+            <div class="pane pane-css">
+              <h4 class="pane-label">Ваш CSS</h4>
+              <textarea class="css-input" rows="9" spellcheck="false" wrap="off" placeholder="/* Пишите CSS здесь */"></textarea>
+              <button class="apply-btn" type="button">Применить ▶</button>
+            </div>
+            <div class="pane pane-preview">
+              <h4 class="pane-label">Результат</h4>
+              <iframe class="preview-frame" title="Предпросмотр задачи 6.10" sandbox="allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            </div>
+          </div>
+          <p class="goal-text">Цель: Первому шагу задайте зелёную верхнюю рамку 3px, последнему — красную нижнюю рамку 3px, средний шаг остаётся нейтральным.</p>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <nav class="site-nav">
+      <a href="#context">Контекстные</a>
+      <a href="#classes">Классы</a>
+      <a href="#hover">:hover</a>
+      <a href="#visited">:visited</a>
+      <a href="#first-child">:first-child</a>
+      <a href="#last-child">:last-child</a>
+    </nav>
+    <p class="footer-note">CSS-задачник · 60 задач · пишите код прямо на странице</p>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
